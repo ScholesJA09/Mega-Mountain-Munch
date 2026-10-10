@@ -96,7 +96,7 @@ public class DirectionalJump : MonoBehaviour
         float jumpY = Mathf.Lerp(minJumpForceY, maxJumpForceY, chargePercent);
         float jumpX = Mathf.Lerp(minJumpForceX, maxJumpForceX, chargePercent);
 
-        rb.velocity = new Vector2(facingDirection * jumpX, jumpY);
+        rb.linearVelocity = new Vector2(facingDirection * jumpX, jumpY);
 
         if (jumpSound != null)
         {
