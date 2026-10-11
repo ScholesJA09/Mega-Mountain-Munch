@@ -45,6 +45,18 @@ public class DirectionalJump : MonoBehaviour
 
     void Update()
     {
+        // Stop all player input and movement logic if the game is paused
+        if (Mathf.Approximately(Time.timeScale, 0f))
+        {
+            // Optional: cancel charging if paused mid-charge
+            if (isCharging)
+            {
+                isCharging = false;
+                currentChargeTime = 0f;
+            }
+            return;
+        }
+
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
 
         if (isGrounded && (!wasGrounded || hasJumped) && !isCharging)
